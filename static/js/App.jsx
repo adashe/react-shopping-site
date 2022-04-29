@@ -1,5 +1,10 @@
 function App() {
   const [melons, setMelons] = React.useState({});
+  React.useEffect( () => {
+    fetch("/api/melons")
+      .then((response) => response.json())
+      .then((responseJSON) => setMelons(responseJSON));
+  }, []);
 
   return (
     <ReactRouterDOM.BrowserRouter>
